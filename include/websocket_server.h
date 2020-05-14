@@ -48,9 +48,9 @@ int ws_server_add_client(struct netconn* conn,
                          uint16_t len,
                          char* url,
                          void (*callback)(uint8_t num,
-                                          WEBSOCKET_TYPE_t type,
-                                          char* msg,
-                                          uint64_t len));
+                             WEBSOCKET_TYPE_t type,
+                             char* msg,
+                             uint64_t len));
 
 int ws_server_add_client_protocol(struct netconn* conn,
                                   char* msg,
@@ -58,9 +58,9 @@ int ws_server_add_client_protocol(struct netconn* conn,
                                   char* url,
                                   char* protocol,
                                   void (*callback)(uint8_t num,
-                                                   WEBSOCKET_TYPE_t type,
-                                                   char* msg,
-                                                   uint64_t len));
+                                      WEBSOCKET_TYPE_t type,
+                                      char* msg,
+                                      uint64_t len));
 
 int ws_server_len_url(char* url); // returns the number of connected clients to url
 int ws_server_len_all(); // returns the total number of connected clients
@@ -69,19 +69,22 @@ int ws_server_remove_client(int num); // removes the client with the set number
 int ws_server_remove_clients(char* url); // removes all clients connected to the specified url
 int ws_server_remove_all(); // removes all clients from the server
 
-int ws_server_send_text_client(int num,char* msg,uint64_t len); // send text to client with the set number
-int ws_server_send_text_clients(char* url,char* msg,uint64_t len); // sends text to all clients with the set number
-int ws_server_send_text_all(char* msg,uint64_t len); // sends text to all clients
+int ws_server_send_text_client(int num, char* msg, uint64_t len); // send text to client with the set number
+int ws_server_send_text_clients(char* url, char* msg, uint64_t len); // sends text to all clients with the set number
+int ws_server_send_text_all(char* msg, uint64_t len); // sends text to all clients
 
-int ws_server_send_bin_client(int num,char* msg,uint64_t len);
-int ws_server_send_bin_clients(char* url,char* msg,uint64_t len);
-int ws_server_send_bin_all(char* msg,uint64_t len);
+int ws_server_send_bin_client(int num, char* msg, uint64_t len);
+int ws_server_send_bin_clients(char* url, char* msg, uint64_t len);
+int ws_server_send_bin_all(char* msg, uint64_t len);
 
 // these versions can be sent from the callback ONLY
+int ws_server_send_bin_client_from_callback(int num, char* msg, uint64_t len);
+int ws_server_send_bin_clients_from_callback(char* url, char* msg, uint64_t len);
+int ws_server_send_bin_all_from_callback(char* msg, uint64_t len);
 
-int ws_server_send_text_client_from_callback(int num,char* msg,uint64_t len); // send text to client with the set number
-int ws_server_send_text_clients_from_callback(char* url,char* msg,uint64_t len); // sends text to all clients with the set number
-int ws_server_send_text_all_from_callback(char* msg,uint64_t len); // sends text to all clients
+int ws_server_send_text_client_from_callback(int num, char* msg, uint64_t len); // send text to client with the set number
+int ws_server_send_text_clients_from_callback(char* url, char* msg, uint64_t len); // sends text to all clients with the set number
+int ws_server_send_text_all_from_callback(char* msg, uint64_t len); // sends text to all clients
 
 int ws_server_ping(); // sends a ping to all connected clients
 
